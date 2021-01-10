@@ -29,7 +29,7 @@ class App extends React.Component {
   fetchTasks(){
     console.log('Fetching')
 
-    fetch('http://'+config.ip+':'+config.port+'/api/task-list/')
+    fetch('https://'+config.ip+':'+config.port+'/api/task-list/')
         .then(response => response.json())
         .then(data =>
             this.setState({
@@ -56,10 +56,10 @@ class App extends React.Component {
     e.preventDefault()
     console.log('ITEM:', this.state.activeItem)
 
-    var url = 'http://'+config.ip+':'+config.port+'/api/task-create/'
+    var url = 'https://'+config.ip+':'+config.port+'/api/task-create/'
 
     if (this.state.editing === true){
-      url = `http://'${ config.ip }:${ config.port }/api/task-list/${ this.state.activeItem.id }/`
+      url = `https://'${ config.ip }:${ config.port }/api/task-list/${ this.state.activeItem.id }/`
       this.setState({
         editing: false,
       })
@@ -93,7 +93,7 @@ class App extends React.Component {
   }
 
   deleteItem(task){
-    fetch(`http://${config.ip}:${config.port}/api/task-delete/${task.id}/`, {
+    fetch(`https://${config.ip}:${config.port}/api/task-delete/${task.id}/`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json"
@@ -104,7 +104,7 @@ class App extends React.Component {
   }
 
   crossOutItem(task){
-    var url = `http://${ config.ip }:${ config.port }/api/task-update/${task.id}/`
+    var url = `https://${ config.ip }:${ config.port }/api/task-update/${task.id}/`
 
     fetch(url, {
       method: 'POST',
