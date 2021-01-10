@@ -27,8 +27,6 @@ class App extends React.Component {
   }
 
   fetchTasks(){
-    console.log('Fetching')
-
     fetch('https://'+config.ip+':'+config.port+'/api/task-list/')
         .then(response => response.json())
         .then(data =>
@@ -41,8 +39,6 @@ class App extends React.Component {
   handleChange(e){
     var name = e.target.name
     var value = e.target.value
-    console.log('Name:', name)
-    console.log('Value:', value)
 
     this.setState({
       activeItem:{
@@ -54,7 +50,6 @@ class App extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
-    console.log('ITEM:', this.state.activeItem)
 
     var url = 'https://'+config.ip+':'+config.port+'/api/task-create/'
 
