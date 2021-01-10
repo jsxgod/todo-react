@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   fetchTasks(){
-    fetch('https://'+config.ip+':'+config.port+'/api/task-list/')
+    fetch(`https://${ config.ip }:${ config.port }/api/task-list/`)
         .then(response => response.json())
         .then(data =>
             this.setState({
@@ -37,13 +37,10 @@ class App extends React.Component {
   }
 
   handleChange(e){
-    var name = e.target.name
-    var value = e.target.value
-
     this.setState({
       activeItem:{
         ...this.state.activeItem,
-        title:value
+        title: e.target.value
       }
     })
   }
@@ -51,10 +48,10 @@ class App extends React.Component {
   handleSubmit(e){
     e.preventDefault()
 
-    var url = 'https://'+config.ip+':'+config.port+'/api/task-create/'
+    let url = `https://${ config.ip }:${ config.port }/api/task-create/`;
 
     if (this.state.editing === true){
-      url = `https://'${ config.ip }:${ config.port }/api/task-list/${ this.state.activeItem.id }/`
+      url = `https://${ config.ip }:${ config.port }/api/task-update/${ this.state.activeItem.id }/`
       this.setState({
         editing: false,
       })
@@ -88,7 +85,7 @@ class App extends React.Component {
   }
 
   deleteItem(task){
-    fetch(`https://${config.ip}:${config.port}/api/task-delete/${task.id}/`, {
+    fetch(`https://${ config.ip }:${ config.port }/api/task-delete/${ task.id }/`, {
       method: "DELETE",
       headers: {
         "Content-type": "application/json"
@@ -99,7 +96,7 @@ class App extends React.Component {
   }
 
   crossOutItem(task){
-    var url = `https://${ config.ip }:${ config.port }/api/task-update/${task.id}/`
+    const url = `https://${ config.ip }:${ config.port }/api/task-update/${ task.id }/`
 
     fetch(url, {
       method: 'POST',
@@ -113,16 +110,16 @@ class App extends React.Component {
   }
 
   render() {
-    var tasks = this.state.todoList;
-    var self = this;
+    const tasks = this.state.todoList;
+    const self = this;
     return(
         <div className="container">
           <div id="task-container">
-            <div onSubmit={this.handleSubmit} id="form-wrapper">
+            <div onSubmit={ this.handleSubmit } id="form-wrapper">
               <form id="form">
                 <div className="flex-wrapper">
                   <div style={{flex: 6}}>
-                    <input onChange={this.handleChange} className="form-control" id="title" value={this.state.activeItem.title} type="text" name="title" placeholder="Task title..."/>
+                    <input onChange={ this.handleChange } className="form-control" id="title" value={ this.state.activeItem.title } type="text" name="title" placeholder="Task title..."/>
                   </div>
 
                   <div style={{flex: 1}}>
