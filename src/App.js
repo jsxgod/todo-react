@@ -6,13 +6,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        todoList:[],
-        activeItem:{
-          id:null,
-          title:'',
-          completed:false,
+        todoList: [],
+        activeItem: {
+          id: null,
+          title: '',
+          completed: false,
         },
-        editing:false,
+        editing: false,
       }
       this.fetchTasks = this.fetchTasks.bind(this)
       this.handleChange = this.handleChange.bind(this)
@@ -71,7 +71,7 @@ class App extends React.Component {
           title: '',
           completed: false,
         }
-      })
+      });
     }).catch(function(error){
       console.log(error)
     })
@@ -118,12 +118,11 @@ class App extends React.Component {
             <div onSubmit={ this.handleSubmit } id="form-wrapper">
               <form id="form">
                 <div className="flex-wrapper">
-                  <div style={{flex: 6}}>
-                    <input onChange={ this.handleChange } className="form-control" id="title" value={ this.state.activeItem.title } type="text" name="title" placeholder="Task title..."/>
+                  <div style={{flexBasis: '80%', marginRight: '10px'}}>
+                    <input onChange={ this.handleChange } className="form-control" id="title" type="text" name="title" placeholder="Task title..." value={ this.state.activeItem.title }/>
                   </div>
-
-                  <div style={{flex: 1}}>
-                    <input id="submit" className="btn btn-warning" type="submit" name="Add task" value="Add" />
+                  <div style={{flexBasis: '20%'}}>
+                    <input id="submit" className="btn btn-primary" type="submit" name="Add task" value="📝" />
                   </div>
                 </div>
               </form>
@@ -131,7 +130,7 @@ class App extends React.Component {
             <div id="list-wrapper">
               {tasks.map(function(task, index){
                 return(
-                    <div key={index} className="task-wrapper flex-wrapper">
+                    <div key={index} className={"flex-wrapper task-wrapper"}>
                       <div onClick={() => self.crossOutItem(task)} style={{flex: 7}}>
                         {task.completed === false ?
                             (<span>{task.title}</span>) :
@@ -139,11 +138,11 @@ class App extends React.Component {
                       </div>
 
                       <div style={{flex: 1}}>
-                        <button onClick={() => self.startEdit(task)} className="btn btn-sm btn-outline-info edit">Edit</button>
+                        <button onClick={() => self.startEdit(task)} className="btn btn-outline-dark btn-light edit">✏️</button>
                       </div>
 
                       <div style={{flex: 1}}>
-                        <button onClick={() => self.deleteItem(task)} className="btn btn-sm btn-outline-dark delete">❌</button>
+                        <button onClick={() => self.deleteItem(task)} className="btn btn-outline-dark btn-danger delete">🗑️</button>
                       </div>
                     </div>
                 )

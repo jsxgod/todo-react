@@ -1,25 +1,25 @@
 body{
-  background: rgb(54,217,182);
-  background: linear-gradient(
-          90deg,
-          rgba(53,217,182,1) 0%,
-          rgba(32,152, 126,1) 43%,
-          rgba(0,212,255,1) 100%
-  );
+  background-color: #fbb034;
+  background-image: linear-gradient(90deg, #fbb034 0%, #ffdd00 74%);
 }
 
 h1, h2, h3, h4, h5, p, span, strike{
   font-family: 'Montserrat', sans-serif;
 }
 
+#container {
+  border-radius: 10px;
+}
+
 #task-container{
   max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px rgba(0,0,0,0.20);
+  box-shadow: 0 14px 28px rgba(182, 151, 151, 0.25), 0 10px rgba(0,0,0,0.20);
   background-color: #fff;
   margin-top: 100px;
   margin-bottom: 100px;
 
+  border-radius: 10px;
   justify-content: space-around;
   align-items: flex-start;
 }
@@ -29,15 +29,16 @@ h1, h2, h3, h4, h5, p, span, strike{
   position: sticky;
   top: 0;
   border-bottom: 1px solid #e9e9e9;
+  border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-  padding: 40px;
+  padding: 30px;
 }
 
 #submit{
-  background-color: #36d9b6;
-  border-radius: 0;
-  border: 0;
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 5px;
   color: #fff;
 }
 
@@ -49,6 +50,9 @@ h1, h2, h3, h4, h5, p, span, strike{
   margin: 5px;
   padding: 5px;
   cursor: pointer;
-  border-bottom: 1px solid #e9e9e9;
-  color: #686868
+  color: #686868;
 }
+
+.btn-primary{color:#fff;background-color:#fbb034;border: none}
+.btn-primary:hover{color:#fff;background-color:#ffdd00;}
+.btn-primary:focus,.btn-primary.focus{box-shadow:0 0 0 2px #343a40}
