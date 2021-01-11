@@ -206,11 +206,11 @@ class App extends React.Component {
                       </div>
 
                       <div style={{flex: 1}}>
-                        <button onClick={() => self.startEdit(task)} className="btn btn-outline-dark btn-light edit">✏️</button>
+                        <button onClick={() => self.startEdit(task)} className="btn btn-light edit">✏️</button>
                       </div>
 
                       <div style={{flex: 1}}>
-                        <button onClick={() => self.deleteItem(task)} className="btn btn-outline-dark btn-danger delete">🗑️</button>
+                        <button onClick={() => self.deleteItem(task)} className="btn btn-danger delete">🗑️</button>
                       </div>
                     </div>
                 )
