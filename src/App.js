@@ -13,6 +13,7 @@ class App extends React.Component {
           completed: false,
         },
         editing: false,
+        showError: false,
       }
       this.fetchTasks = this.fetchTasks.bind(this)
       this.handleChange = this.handleChange.bind(this)
@@ -47,6 +48,12 @@ class App extends React.Component {
 
   handleSubmit(e){
     e.preventDefault()
+    
+    const inputValue = document.getElementById('title').value
+    if (inputValue === ""){
+      this.shakeComponent(document.getElementById('title'))
+      this.setState({showError: true});
+    }
 
     let url = `https://${ config.ip }:${ config.port }/api/task-create/`;
 
@@ -109,23 +116,43 @@ class App extends React.Component {
     })
   }
 
+  shakeComponent = (inputBox) => {
+    inputBox.style.boxShadow= '0 1px 1px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6)';
+    const interval = setInterval(shake, 40);
+    let px = 7;
+
+    function shake() {
+        inputBox.style.marginLeft = px + 'px';
+        px = px < 0 ? ((px * -1) - 1) : ((px * -1) + 1);
+        if (px === 1) clearInterval(interval);
+    }
+  }
+
+  fixError = () => {
+    if (this.state.showError){
+      document.getElementById('title').style.boxShadow = 'none';
+      this.setState({showError: false})
+    }
+  }
+
   render() {
     const tasks = this.state.todoList;
     const self = this;
     return(
         <div className="container">
           <div id="task-container">
-            <div onSubmit={ this.handleSubmit } id="form-wrapper">
+            <div onSubmit={ this.handleSubmit } onClick={this.fixError} id="form-wrapper">
               <form id="form">
                 <div className="flex-wrapper">
                   <div style={{flexBasis: '80%', marginRight: '10px'}}>
-                    <input onChange={ this.handleChange } className="form-control" id="title" type="text" name="title" placeholder="Task title..." value={ this.state.activeItem.title }/>
+                    <input onChange={ this.handleChange } onFocus={this.fixError} className="form-control" id="title" type="text" name="title" placeholder="Task title... ✍" value={ this.state.activeItem.title }/>
                   </div>
                   <div style={{flexBasis: '20%'}}>
                     <input id="submit" className="btn btn-primary" type="submit" name="Add task" value="📝" />
                   </div>
                 </div>
               </form>
+              {this.state.showError ? <p>Please enter title</p> : <div/>}
             </div>
             <div id="list-wrapper">
               {tasks.map(function(task, index){
