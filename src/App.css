@@ -1,13 +1,17 @@
 body{
   background-color: #fbb034;
-  background-image: linear-gradient(90deg, #fbb034 0%, #ffdd00 74%);
+  background-image: linear-gradient(90deg, #fbb034 0%, #fadb15 74%);
 }
 
 h1, h2, h3, h4, h5, p, span, strike{
   font-family: 'Montserrat', sans-serif;
 }
 
-p {
+h1{
+  margin-top: 50px;
+}
+
+#error{
   color: red;
 }
 
@@ -15,7 +19,7 @@ p {
   border-radius: 10px;
 }
 
-#task-container{
+#todo-container{
   max-width: 600px;
   margin: 0 auto;
   box-shadow: 0 14px 28px rgba(182, 151, 151, 0.25), 0 10px rgba(0,0,0,0.20);
@@ -28,6 +32,23 @@ p {
   align-items: flex-start;
 }
 
+#footer{
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  
+  position: fixed; 
+  bottom:0%; 
+}
+
+#footer-p{
+ text-align: center;
+}
+
+#footer p{
+  text-align: center;
+}
+
 #form-wrapper{
   position: -webkit-sticky;
   position: sticky;
@@ -36,7 +57,12 @@ p {
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 3px 8px rgba(0,0,0,0.25);
-  padding: 30px;
+  padding: 40px;
+  padding-bottom: 30px;
+}
+
+#error-container{
+  min-height: 10px;
 }
 
 #submit{
@@ -55,8 +81,33 @@ p {
   padding: 5px;
   cursor: pointer;
   color: #686868;
+
+  justify-content: space-around;
 }
 
 .btn-primary{color:#fff;background-color:#fbb034;border: none}
 .btn-primary:hover{color:#fff;background-color:#ffdd00;}
+.btn-primary:active{color:#fff;background-color: #fbb034;}
 .btn-primary:focus,.btn-primary.focus{box-shadow:0 0 0 2px #343a40}
+.btn-primary:not(:disabled):not(.disabled):active{color:#fff;background-color:#3bfb34;border-color:#000}
+
+
+.btn.focus, .btn:focus {
+  outline: 10px;
+  box-shadow: none!important;
+}
+
+
+@media only screen and (max-width: 600px) {
+  #form-wrapper{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #e9e9e9;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    padding: 15px;
+    padding-bottom: 30px;
+  }
+}
