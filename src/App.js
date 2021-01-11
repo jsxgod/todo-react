@@ -185,7 +185,7 @@ class App extends React.Component {
                     <input onChange={ this.handleChange } onFocus={this.fixError} className="form-control" id="title" type="text" name="title" placeholder="Task title... ✍" value={ this.state.activeItem.title }/>
                   </div>
                   <div style={{flexBasis: '20%'}}>
-                    <input id="submit" className="btn btn-primary" type="submit" name="Add task" value="📝" />
+                    <input id="submit" className="btn btn-primary" type="submit" name="Add task" value="➕"/>
                   </div>
                 </div>
               </form>
