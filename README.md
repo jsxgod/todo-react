@@ -1,6 +1,6 @@
 # TODO list 📝
 TODO list made with React, Django and Django REST framework<br/>
-Supports CRUD operations.<br/>
+Add, delete, edit or cross-out Tasks ✔️❌✏️ t̶a̶s̶k̶ ̶n̶a̶m̶e̶✏️.<br/>
 
 TODO: Add user profiles<br/>
 
